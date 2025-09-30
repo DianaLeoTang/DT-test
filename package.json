@@ -1,0 +1,39 @@
+{
+  "name": "dt-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "unit:init": "karma init",
+    "unit": "karma start",
+    "jest:test": "jest",
+    "jest:ui": "majestic",
+    "ui:init": "backstop init",
+    "ui:start": "backstop test",
+    "ui": "backstop test",
+    "e2e:test": "node tests/e2e/baidu.spec.js",
+    "service:test": "node mochasRunner.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "karma": "^6.3.4",
+    "mocha": "^9.0.1",
+    "supertest": "^6.1.3"
+  },
+  "devDependencies": {
+    "backstopjs": "^6.3.25",
+    "jasmine-core": "^3.7.1",
+    "jest": "^27.0.5",
+    "karma-coverage": "^2.0.3",
+    "karma-jasmine": "^4.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "majestic": "^1.8.0",
+    "mochawesome": "^6.2.2",
+    "phantomjs": "^2.1.7",
+    "puppeteer": "^14.3.0",
+    "rize": "^0.9.0"
+  }
+}
