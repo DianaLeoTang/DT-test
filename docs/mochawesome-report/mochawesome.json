@@ -1,0 +1,127 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-06-25T13:51:19.539Z",
+    "end": "2021-06-25T13:51:19.568Z",
+    "duration": 29,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b1b729b4-62c0-49bb-91c0-1a18e5e9f7f0",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6e20ce40-3647-46df-8e51-7895ecc0df00",
+          "title": "Node自动化测试",
+          "fullFile": "/Users/yuanzhijia/Desktop/yd-tests/tests/services/router.spec.js",
+          "file": "/tests/services/router.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "获取首页数据",
+              "fullTitle": "Node自动化测试 获取首页数据",
+              "timedOut": false,
+              "duration": 19,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "request(app)\n  .get('/user')\n  .expect('Content-Type', /json/)\n  .expect('Content-Length', '15')\n  .expect(200)\n  .end(function (err, res) {\n    if (err) {\n      done(err);\n    } else {\n      //   if (res.body == 'john') {\n      //   }\n      done();\n    }\n  });",
+              "err": {},
+              "uuid": "bf142a78-f9d1-46f9-860b-67f81d94dd2c",
+              "parentUUID": "6e20ce40-3647-46df-8e51-7895ecc0df00",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "404测试",
+              "fullTitle": "Node自动化测试 404测试",
+              "timedOut": false,
+              "duration": 4,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(app)\n  .get('/xx')\n  .expect(200)\n  .end(function (err, res) {\n    if (err) {\n      done(err);\n    } else {\n      done();\n    }\n  });",
+              "err": {
+                "message": "Error: expected 200 \"OK\", got 404 \"Not Found\"",
+                "estack": "Error: expected 200 \"OK\", got 404 \"Not Found\"\n    at Context.<anonymous> (tests/services/router.spec.js:31:8)\n----\n    at Test._assertStatus (node_modules/supertest/lib/test.js:296:12)\n    at /Users/yuanzhijia/Desktop/yd-tests/node_modules/supertest/lib/test.js:80:15\n    at Test._assertFunction (node_modules/supertest/lib/test.js:311:11)\n    at Test.assert (node_modules/supertest/lib/test.js:201:21)\n    at Server.localAssert (node_modules/supertest/lib/test.js:159:12)\n    at emitCloseNT (net.js:1661:8)\n    at processTicksAndRejections (internal/process/task_queues.js:81:21)",
+                "diff": null
+              },
+              "uuid": "0467a691-389f-4d80-ad49-4596eee9d93b",
+              "parentUUID": "6e20ce40-3647-46df-8e51-7895ecc0df00",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bf142a78-f9d1-46f9-860b-67f81d94dd2c"
+          ],
+          "failures": [
+            "0467a691-389f-4d80-ad49-4596eee9d93b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 23,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "9.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "./docs/mochawesome-report",
+        "quiet": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
