@@ -3,48 +3,22 @@ report({
   "tests": [
     {
       "pair": {
-        "reference": "../bitmaps_reference/qq_map_0_document_0_iphone.png",
-        "test": "../bitmaps_test/20210625-211404/qq_map_0_document_0_iphone.png",
-        "selector": "document",
-        "fileName": "qq_map_0_document_0_iphone.png",
-        "label": "map",
+        "reference": "../bitmaps_reference/backstop_default__0__0_iphone.png",
+        "test": "../bitmaps_test/20251016-203326/backstop_default__0__0_iphone.png",
+        "selector": "",
+        "fileName": "backstop_default__0__0_iphone.png",
+        "label": "寄件信息页面",
         "requireSameDimensions": true,
         "misMatchThreshold": 0.1,
-        "url": "https://map.qq.com/m/",
+        "url": "http://10.59.207.193:10086/#/chooseAddress",
         "referenceUrl": "",
         "expect": 0,
         "viewportLabel": "iphone",
-        "diff": {
-          "isSameDimensions": true,
-          "dimensionDifference": {
-            "width": 0,
-            "height": 0
-          },
-          "rawMisMatchPercentage": 2.6574712643678158,
-          "misMatchPercentage": "2.66",
-          "analysisTime": 21
-        },
-        "diffImage": "../bitmaps_test/20210625-211404/failed_diff_qq_map_0_document_0_iphone.png"
-      },
-      "status": "fail"
-    },
-    {
-      "pair": {
-        "reference": "../bitmaps_reference/qq_map_0_document_1_tablet.png",
-        "test": "../bitmaps_test/20210625-211404/qq_map_0_document_1_tablet.png",
-        "selector": "document",
-        "fileName": "qq_map_0_document_1_tablet.png",
-        "label": "map",
-        "requireSameDimensions": true,
-        "misMatchThreshold": 0.1,
-        "url": "https://map.qq.com/m/",
-        "referenceUrl": "",
-        "expect": 0,
-        "viewportLabel": "tablet",
-        "error": "Reference file not found /Users/yuanzhijia/Desktop/yd-tests/backstop_data/bitmaps_reference/qq_map_0_document_1_tablet.png"
+        "engineErrorMsg": "net::ERR_CONNECTION_REFUSED at http://10.59.207.193:10087/#/chooseAddress",
+        "error": "Reference file not found /Users/tc031338/DTCode/DT-test/backstop_data/bitmaps_reference/backstop_default__0__0_iphone.png"
       },
       "status": "fail"
     }
   ],
-  "id": "qq"
+  "id": "backstop_default"
 });

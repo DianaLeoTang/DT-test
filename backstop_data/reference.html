@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>UI Baseline</title>
+  <style>
+    html,body{margin:0;padding:0;background:#fff}
+    #ref{
+      display:block;
+      /* 如果你知道图片像素，强烈建议写死↓，保证尺寸一致性 */
+      /* width: 1440px; height: 900px; */
+    }
+  </style>
+</head>
+<body>
+  <img id="ref" src="./Users/tc031338/DTCode/DT-test/backstop_data/reference_assets/地图选址-搜索地址@2x.png" alt="baseline">
+  <script>
+    // 若没写死尺寸：自动用图片原始尺寸设置页面尺寸，保证 1:1 对比
+    const img = document.getElementById('ref');
+    img.addEventListener('load', () => {
+      document.body.style.width  = img.naturalWidth  + 'px';
+      document.body.style.height = img.naturalHeight + 'px';
+      document.body.setAttribute('data-ready', '1'); // 供 Backstop readySelector 等待
+    });
+  </script>
+</body>
+</html>
