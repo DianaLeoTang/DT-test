@@ -24,7 +24,8 @@ module.exports = async (page, scenario, vp) => {
     });
     
     // 重新导航到目标页面
-    await page.goto('http://10.59.207.193:10086/#/chooseAddress', { waitUntil: 'networkidle0' });
+    // await page.goto('http://10.59.207.193:10086/#/chooseAddress', { waitUntil: 'networkidle0' });
+    await page.goto(scenario.url, { waitUntil: 'networkidle0' });
     
     console.log('重新导航后的URL:', page.url());
   }
