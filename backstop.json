@@ -1,37 +1,32 @@
 {
-  "id": "qq",
+  "id": "backstop_default",
   "viewports": [
     {
       "label": "iphone",
       "width": 375,
-      "height": 667
-    },
-    {
-      "label": "tablet",
-      "width": 1024,
-      "height": 768
+      "height": 728
     }
   ],
   "onBeforeScript": "puppet/onBefore.js",
-  "onReadyScript": "puppet/onReady.js",
+  "onReadyScript": "puppet/authHandler.js",
   "scenarios": [
     {
-      "label": "map",
+      "label": "寄件信息页面",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "https://map.qq.com/m/",
+      "url": "http://10.59.207.193:10086/#/chooseAddress",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
-      "delay": 0,
+      "delay": 2000,
       "hideSelectors": [],
       "removeSelectors": [],
       "hoverSelector": "",
       "clickSelector": "",
-      "postInteractionWait": 0,
+      "postInteractionWait": 1000,
       "selectors": [],
       "selectorExpansion": true,
       "expect": 0,
-      "misMatchThreshold": 0.1,
+      "misMatchThreshold" : 0.1,
       "requireSameDimensions": true
     }
   ],
@@ -39,8 +34,8 @@
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "docs/backstop_data/html_report",
-    "ci_report": "docs/backstop_data/ci_report"
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
   },
   "report": ["browser"],
   "engine": "puppeteer",
