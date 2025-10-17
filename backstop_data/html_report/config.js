@@ -3,10 +3,10 @@ report({
   "tests": [
     {
       "pair": {
-        "reference": "../bitmaps_reference/backstop_default__0__0_iphone.png",
-        "test": "../bitmaps_test/20251016-203326/backstop_default__0__0_iphone.png",
-        "selector": "",
-        "fileName": "backstop_default__0__0_iphone.png",
+        "reference": "../bitmaps_reference/backstop_default__0_document_0_iphone.png",
+        "test": "../bitmaps_test/20251017-103818/backstop_default__0_document_0_iphone.png",
+        "selector": "document",
+        "fileName": "backstop_default__0_document_0_iphone.png",
         "label": "寄件信息页面",
         "requireSameDimensions": true,
         "misMatchThreshold": 0.1,
@@ -14,8 +14,17 @@ report({
         "referenceUrl": "",
         "expect": 0,
         "viewportLabel": "iphone",
-        "engineErrorMsg": "net::ERR_CONNECTION_REFUSED at http://10.59.207.193:10087/#/chooseAddress",
-        "error": "Reference file not found /Users/tc031338/DTCode/DT-test/backstop_data/bitmaps_reference/backstop_default__0__0_iphone.png"
+        "diff": {
+          "isSameDimensions": false,
+          "dimensionDifference": {
+            "width": -188,
+            "height": -490
+          },
+          "rawMisMatchPercentage": 5.484633983439643,
+          "misMatchPercentage": "5.48",
+          "analysisTime": 15
+        },
+        "diffImage": "../bitmaps_test/20251017-103818/failed_diff_backstop_default__0_document_0_iphone.png"
       },
       "status": "fail"
     }
