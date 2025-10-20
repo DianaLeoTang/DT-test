@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 bitmaps_test
+uploaded_references/
+reference-config.json

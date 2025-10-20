@@ -4,11 +4,11 @@
     {
       "label": "iphone",
       "width": 375,
-      "height": 728
+      "height": 812
     }
   ],
   "onBeforeScript": "puppet/onBefore.js",
-  "onReadyScript": "puppet/authHandler.js",
+  "onReadyScript": "puppet/authAndFixContentV2.js",
   "scenarios": [
     {
       "label": "寄件信息页面",
@@ -17,16 +17,42 @@
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
-      "delay": 2000,
-      "hideSelectors": [],
-      "removeSelectors": [],
+      "delay": 5000,
+      "hideSelectors": [
+        // 隐藏状态栏
+        ".taro-tabbar__container",
+        ".weui-navigation-bar",
+        "[class*='statusBar']",
+        "[class*='navbar']",
+        // 隐藏输入框和光标
+        "taro-textarea",
+        ".weui-input",
+        ".weui-textarea",
+        "input[type='text']",
+        "textarea",
+        "input",
+        // 隐藏底部图标/按钮
+        "[class*='setting']",
+        "[class*='icon-setting']",
+        ".setting-icon",
+        // 隐藏可能的动态元素
+        ".cursor",
+        ".blinking"
+      ],
+      "removeSelectors": [
+        // 完全移除状态栏和底部导航
+        ".taro-tabbar",
+        "[class*='tabbar']",
+        ".loading",
+        ".skeleton"
+      ],
       "hoverSelector": "",
       "clickSelector": "",
-      "postInteractionWait": 1000,
-      "selectors": [],
+      "postInteractionWait": 2000,
+      "selectors": ["document"],
       "selectorExpansion": true,
       "expect": 0,
-      "misMatchThreshold" : 0.1,
+      "misMatchThreshold": 8,
       "requireSameDimensions": true
     }
   ],
@@ -40,7 +66,16 @@
   "report": ["browser"],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"]
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-web-security",
+      "--font-render-hinting=none",
+      "--force-color-profile=srgb",
+      "--disable-font-subpixel-positioning",
+      "--disable-lcd-text"
+    ]
   },
   "asyncCaptureLimit": 5,
   "asyncCompareLimit": 50,

@@ -7,6 +7,8 @@
     "ui:init": "backstop init",
     "ui:start": "backstop test",
     "ui": "backstop test",
+    "ui:reference": "backstop reference",
+    "ui:approve": "backstop approve",
     "e2e:test": "node tests/e2e/baidu.spec.js",
     "service:test": "node mochasRunner.js"
   },
