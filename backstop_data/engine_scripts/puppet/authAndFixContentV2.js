@@ -6,42 +6,50 @@ module.exports = async (page, scenario, vp) => {
   // ==================== 第一步：处理认证 ====================
   console.log('【步骤 1/3】处理认证...');
   
-  await page.evaluate(() => {
-    // 设置 localStorage 认证信息
-    // ⚠️ 方案 1: 如果您知道有效的 token，直接在这里设置
-    // localStorage.setItem('token', 'YOUR_REAL_TOKEN_HERE');
-    
-    // ⚠️ 方案 2: 如果不需要真实登录，设置模拟数据跳过验证
-    localStorage.setItem('token', '{"data":{"stoken":"AAFcmAAAYS00eLCBeZhoCQ3c6DU53Z0IXTUwLLkJYbVE9gtAIAAALpziyB_nov9BB4GLhgpptTIQclsAAGTf6xFpDAAA_NmwGcUugxoHZngaW6gAAMnvgB5a3AAAgACM","uid":100376347,"phone":"19801191517"}}');
-    localStorage.setItem('userInfo', JSON.stringify({
-      id: 'test_user',
-      phone: '13800138000',
-      name: '测试用户'
-    }));
-    
-    console.log('LocalStorage token 已设置');
-  });
+  // 先获取当前URL
+  let currentUrl = page.url();
+  console.log('初始页面:', currentUrl);
   
   // 检查是否在登录页
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  let currentUrl = page.url();
-  console.log('当前页面:', currentUrl);
-  
-  // 如果在登录页，尝试导航到目标页面
-  if (currentUrl.includes('login') || currentUrl !== scenario.url) {
-    console.log('检测到需要跳转，导航到目标页面...');
+  if (currentUrl.includes('login')) {
+    console.log('⚠️ 检测到登录页面，先设置认证信息再重新访问...');
+    
+    // 直接访问目标URL并在加载前注入token
+    await page.evaluateOnNewDocument(() => {
+      localStorage.setItem('token', '{"data":{"stoken":"AAFcmAAAYS00eLCBeZhoCQ3c6DU53Z0IXTUwLLkJYbVE9gtAIAAALpziyB_nov9BB4GLhgpptTIQclsAAGTf6xFpDAAA_NmwGcUugxoHZngaW6gAAMnvgB5a3AAAgACM","uid":100376347,"phone":"19801191517"}}');
+      localStorage.setItem('userInfo', JSON.stringify({
+        id: 'test_user',
+        phone: '13800138000',
+        name: '测试用户'
+      }));
+      console.log('✅ LocalStorage token 已通过 evaluateOnNewDocument 设置');
+    });
+    
+    // 重新访问目标页面
+    console.log('🔄 重新导航到目标页面:', scenario.url);
     try {
       await page.goto(scenario.url, { 
         waitUntil: 'networkidle2',
-        timeout: 10000 
+        timeout: 15000 
       });
       console.log('✅ 已导航到目标页面');
     } catch (error) {
-      console.log('⚠️ 导航超时，继续执行...');
+      console.log('⚠️ 导航超时，继续执行...', error.message);
     }
+  } else {
+    console.log('✅ 已经在目标页面，补充设置认证信息...');
+    // 即使不在登录页，也设置一下认证信息确保安全
+    await page.evaluate(() => {
+      localStorage.setItem('token', '{"data":{"stoken":"AAFcmAAAYS00eLCBeZhoCQ3c6DU53Z0IXTUwLLkJYbVE9gtAIAAALpziyB_nov9BB4GLhgpptTIQclsAAGTf6xFpDAAA_NmwGcUugxoHZngaW6gAAMnvgB5a3AAAgACM","uid":100376347,"phone":"19801191517"}}');
+      localStorage.setItem('userInfo', JSON.stringify({
+        id: 'test_user',
+        phone: '13800138000',
+        name: '测试用户'
+      }));
+    });
   }
   
-  // 再次等待页面稳定
+  // 等待页面稳定
   await new Promise(resolve => setTimeout(resolve, 2000));
   
   currentUrl = page.url();
@@ -55,9 +63,10 @@ module.exports = async (page, scenario, vp) => {
     console.log('3. 路由守卫拦截了未登录用户');
     console.log('\n解决方法：');
     console.log('1. 在浏览器中登录后，获取真实的 token');
-    console.log('2. 更新此脚本中的 token 值');
-    console.log('3. 或者更新 cookies.json 文件');
-    console.log('参考文档：GET-COOKIES-GUIDE.md\n');
+    console.log('2. 更新此脚本中的 token 值（第18和29行）');
+    console.log('3. 或者更新 cookies.json 文件\n');
+  } else {
+    console.log('✅ 成功停留在目标页面');
   }
   
   // ==================== 第二步：等待页面完全加载 ====================
