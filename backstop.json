@@ -7,27 +7,25 @@
       "height": 812
     }
   ],
+  "onBeforeScript": "puppet/onBefore.js",
   "scenarios": [
     {
       "label": "收件信息页面",
       "url": "http://10.59.207.193:10086/#/chooseAddress",
       "delay": 5000,
-      "misMatchThreshold": 10,
-      "requireSameDimensions": false,
+      "misMatchThreshold": 5,
       "selectors": ["document"]
     }
   ],
   "paths": {
     "bitmaps_reference": "backstop_data/bitmaps_reference",
     "bitmaps_test": "backstop_data/bitmaps_test",
-    "html_report": "backstop_data/html_report"
+    "html_report": "backstop_data/html_report",
+    "engine_scripts": "backstop_data/engine_scripts"
   },
   "report": ["browser"],
   "engine": "puppeteer",
   "engineOptions": {
     "args": ["--no-sandbox"]
-  },
-  "resembleOutputOptions": {
-    "ignoreAntialiasing": true
   }
 }

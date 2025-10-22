@@ -1,14 +1,12 @@
 [
   {
-    "domain": ".www.yourdomain.com",
+    "name": "_TOKEN_",
+    "value": "{\"data\":{\"stoken\":\"AAFcmAAAYS00eLCBeZhoCQ3c6DU53Z0IXTUwLLkJYbVE9gtAIAAALpziyB_nov9BB4GLhgpptTIQclsAAGTf6xFpDAAA_NmwGcUugxoHZngaW6gAAMnvgB5a3AAAgACM\",\"uid\":100376347,\"phone\":\"19801191517\"}}",
+    "domain": "10.59.207.193",
     "path": "/",
-    "name": "yourCookieName",
-    "value": "yourCookieValue",
-    "expirationDate": 1798790400,
-    "hostOnly": false,
+    "expires": 9999999999,
     "httpOnly": false,
     "secure": false,
-    "session": false,
     "sameSite": "Lax"
   }
 ]
